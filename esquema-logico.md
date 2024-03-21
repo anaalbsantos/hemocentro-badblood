@@ -1,5 +1,7 @@
-**Funcionário** (<inst>CPF</inst>, Nome, Data_de_Ingresso, Salario)
+**Funcionário** (<u>CPF</u>, Nome, Data_de_Ingresso, Salario)
+
 **Congresso** (Código, Sigla)
+
 **Paciente** (CPF, Nome, Data_de_Nascimento, Idade)
 
 **Contatos** (CPF, contatos)
