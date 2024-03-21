@@ -1,4 +1,4 @@
-**Funcionário** (<u>CPF</u>, Nome, Data_de_Ingresso, Salario)
+**Funcionário** (<u> CPF </u>, Nome, Data_de_Ingresso, Salario)
 
 **Congresso** (Código, Sigla)
 
