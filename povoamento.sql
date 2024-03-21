@@ -13,6 +13,14 @@ CREATE TABLE FUNCIONARIO(
     CONSTRAINT AK_USU_CPF UNIQUE (NOME, NASCIMENTO) --??
 );
 
+CREATE TABLE INSPETOR(
+    CPF VARCHAR(4),
+    FORMACAO VARCHAR(80)
+
+    CONSTRAINT INSPETOR_PK PRIMARY KEY (CPF),
+    CONSTRAINT INSPETORFUNCIONARIO_FK FOREIGN KEY (CPF) REFERENCES FUNCIONARIO(CPF) ON DELETE CASCADE
+);
+
 -- CRIA TABELA PACIENTE
 CREATE TABLE PACIENTE(
     CPF VARCHAR(4),
@@ -97,10 +105,10 @@ CREATE TABLE PROJETO(
     ID_PROJETO VARCHAR(4),
     INSTITUICAO_SIGLA VARCHAR(4),
     TITULO VARCHAR(4),
-    CPF_TECNICO VARCHAR(4) NOT NULL UNIQUE,
+    CPF_INSPETOR VARCHAR(4) NOT NULL UNIQUE,
 
     CONSTRAINT PROJETO_PK PRIMARY KEY(ID_PROJETO),
-    CONSTRAINT PROJETO_TECNICO_FK FOREIGN KEY (CPF_TECNICO) REFERENCES TECNICO_LABORATORIO(CPF) ON DELETE CASCADE
+    CONSTRAINT PROJETO_INSPETOR_FK FOREIGN KEY (CPF_INSPETOR) REFERENCES INSPETOR(CPF) ON DELETE CASCADE
 ); 
 
 --CRIA TABELA SANGUE BOM
@@ -184,6 +192,11 @@ insert into FUNCIONARIO values ('1281','Luan','11-FEB-1999', 40000); --enfermeir
 insert into FUNCIONARIO values ('1291','Maria','31-JAN-1992', 25000); --enfermeiro
 insert into FUNCIONARIO values ('1221','Marcos','20-APR-2001', 24000); --enfermeiro
 insert into FUNCIONARIO values ('1222','Gustavo','20-APR-2001', 1200); --tecnico
+insert into FUNCIONARIO values ('1223','Quinhas','28-JAN-2001', 1200); --inspetor
+insert into FUNCIONARIO values ('1224','Bia','28-JAN-2001', 1200); --inspetor
+
+insert into INSPETOR values ('1223','Bacharel em Ciências Biológicas');
+insert into INSPETOR values ('1224','Bacharel em Ciências Biológicas');
 
 -- qtde de registros inseridos: 7
 insert into PACIENTE values ('2111','Matheus','22-JAN-1990',34);
@@ -196,6 +209,7 @@ insert into PACIENTE values('2117','Sara','07-JAN-2000',24); --não é doador
 
 --qtde de registros inseridos: 7
 insert into RECEPTOR values('3111','Mateus','Hospital Oswaldo Cruz','Cancer');
+insert into RECEPTOR values('3142','Luane','Hospital Oswaldo Cruz','Dengue');
 insert into RECEPTOR values('3112','Luane','Hospital das Clinicas','Dengue');
 insert into RECEPTOR values('3113','Joana','Hospital Getulio Vargas','Hepatite');
 insert into RECEPTOR values('3114','Luke','Hospital Portugues','Rubeola');
@@ -282,4 +296,4 @@ insert into PARTICIPA values('1251','0002','02-JAN-2020','2222');
 insert into PARTICIPA values('1261','0003','03-FEB-2020','3333');
 insert into PARTICIPA values('1271','0004','04-FEB-2020','4444');
 insert into PARTICIPA values('1281','0004','04-FEB-2020','5555');
-
+```
